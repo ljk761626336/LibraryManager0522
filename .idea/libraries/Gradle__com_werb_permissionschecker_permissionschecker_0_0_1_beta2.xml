@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.werb.permissionschecker:permissionschecker-0.0.1-beta2">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permissionschecker-0.0.1-beta2.aar/5dc1512a2085e57475f972f90f97efd5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/permissionschecker-0.0.1-beta2.aar/5dc1512a2085e57475f972f90f97efd5/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.werb.permissionschecker/permissionschecker/0.0.1-beta2/58685818d16618ebadc1c78790659153893704b7/permissionschecker-0.0.1-beta2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

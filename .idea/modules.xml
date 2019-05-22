@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/LibraryManager.iml" filepath="$PROJECT_DIR$/LibraryManager.iml" />
+      <module fileurl="file://$PROJECT_DIR$/baselibrary/baselibrary.iml" filepath="$PROJECT_DIR$/baselibrary/baselibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/drawTool/drawtool.iml" filepath="$PROJECT_DIR$/drawTool/drawtool.iml" />
+      <module fileurl="file://$PROJECT_DIR$/medialibrary/medialibrary.iml" filepath="$PROJECT_DIR$/medialibrary/medialibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/photopicker/photopicker.iml" filepath="$PROJECT_DIR$/photopicker/photopicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/proj4android/proj4android.iml" filepath="$PROJECT_DIR$/proj4android/proj4android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/versionupdata/versionupdata.iml" filepath="$PROJECT_DIR$/versionupdata/versionupdata.iml" />
+    </modules>
+  </component>
+</project>

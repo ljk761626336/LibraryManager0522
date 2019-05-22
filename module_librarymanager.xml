@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_librarymanager" default="compile.module.librarymanager">
+  <dirname property="module.librarymanager.basedir" file="${ant.file.module_librarymanager}"/>
+  
+  <property name="module.jdk.home.librarymanager" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.librarymanager" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.librarymanager" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.librarymanager" value="-encoding UTF-8 -source 7 -target 7 ${compiler.args}"/>
+  
+  <property name="librarymanager.output.dir" value="${module.librarymanager.basedir}/../TitanBase/build/classes/production/LibraryManager"/>
+  <property name="librarymanager.testoutput.dir" value="${module.librarymanager.basedir}/../TitanBase/build/classes/test/LibraryManager"/>
+  
+  <path id="librarymanager.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="librarymanager.module.production.classpath">
+    <path refid="${module.jdk.classpath.librarymanager}"/>
+  </path>
+  
+  <path id="librarymanager.runtime.production.module.classpath">
+    <pathelement location="${librarymanager.output.dir}"/>
+  </path>
+  
+  <path id="librarymanager.module.classpath">
+    <path refid="${module.jdk.classpath.librarymanager}"/>
+    <pathelement location="${librarymanager.output.dir}"/>
+  </path>
+  
+  <path id="librarymanager.runtime.module.classpath">
+    <pathelement location="${librarymanager.testoutput.dir}"/>
+    <pathelement location="${librarymanager.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.librarymanager">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.librarymanager">
+    <patternset refid="excluded.from.module.librarymanager"/>
+  </patternset>
+  
+  
+  <target name="compile.module.librarymanager" depends="compile.module.librarymanager.production,compile.module.librarymanager.tests" description="Compile module LibraryManager"/>
+  
+  <target name="compile.module.librarymanager.production" depends="register.custom.compilers" description="Compile module LibraryManager; production classes"/>
+  
+  <target name="compile.module.librarymanager.tests" depends="register.custom.compilers,compile.module.librarymanager.production" description="compile module LibraryManager; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.librarymanager" description="cleanup module">
+    <delete dir="${librarymanager.output.dir}"/>
+    <delete dir="${librarymanager.testoutput.dir}"/>
+  </target>
+</project>

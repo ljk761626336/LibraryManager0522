@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: com.esri.arcgisruntime:arcgis-android-100.4.0">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/arcgis-android-100.4.0.aar/56fabf323c356dcb0f09830108ff9246/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/arcgis-android-100.4.0.aar/56fabf323c356dcb0f09830108ff9246/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

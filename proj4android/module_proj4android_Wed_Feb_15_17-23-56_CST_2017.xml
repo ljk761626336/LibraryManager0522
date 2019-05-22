@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_proj4android" default="compile.module.proj4android">
+  <dirname property="module.proj4android.basedir" file="${ant.file.module_proj4android}"/>
+  
+  <property name="module.jdk.home.proj4android" value="${jdk.home.android_api_25_platform}"/>
+  <property name="module.jdk.bin.proj4android" value="${jdk.bin.android_api_25_platform}"/>
+  <property name="module.jdk.classpath.proj4android" value="jdk.classpath.android_api_25_platform"/>
+  
+  <property name="compiler.args.proj4android" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="proj4android.output.dir" value="${module.proj4android.basedir}/build/intermediates/classes/debug"/>
+  <property name="proj4android.testoutput.dir" value="${module.proj4android.basedir}/build/intermediates/classes/test/debug"/>
+  
+  <path id="proj4android.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="proj4android.module.production.classpath">
+    <path refid="${module.jdk.classpath.proj4android}"/>
+  </path>
+  
+  <path id="proj4android.runtime.production.module.classpath">
+    <pathelement location="${proj4android.output.dir}"/>
+  </path>
+  
+  <path id="proj4android.module.classpath">
+    <path refid="${module.jdk.classpath.proj4android}"/>
+    <pathelement location="${proj4android.output.dir}"/>
+  </path>
+  
+  <path id="proj4android.runtime.module.classpath">
+    <pathelement location="${proj4android.testoutput.dir}"/>
+    <pathelement location="${proj4android.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.proj4android">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.proj4android">
+    <patternset refid="excluded.from.module.proj4android"/>
+  </patternset>
+  
+  <path id="proj4android.module.sourcepath">
+    <dirset dir="${module.proj4android.basedir}">
+      <include name="build/generated/source/r/debug"/>
+      <include name="build/generated/source/aidl/debug"/>
+      <include name="build/generated/source/buildConfig/debug"/>
+      <include name="build/generated/source/rs/debug"/>
+      <include name="build/generated/res/rs/debug"/>
+      <include name="build/generated/res/resValues/debug"/>
+      <include name="src/main/res"/>
+      <include name="src/main/java"/>
+    </dirset>
+  </path>
+  
+  <path id="proj4android.module.test.sourcepath">
+    <dirset dir="${module.proj4android.basedir}">
+      <include name="build/generated/source/r/androidTest/debug"/>
+      <include name="build/generated/source/aidl/androidTest/debug"/>
+      <include name="build/generated/source/buildConfig/androidTest/debug"/>
+      <include name="build/generated/source/rs/androidTest/debug"/>
+      <include name="build/generated/res/rs/androidTest/debug"/>
+      <include name="build/generated/res/resValues/androidTest/debug"/>
+      <include name="src/androidTest/java"/>
+      <include name="src/test/java"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.proj4android" depends="compile.module.proj4android.production,compile.module.proj4android.tests" description="Compile module proj4android"/>
+  
+  <target name="compile.module.proj4android.production" depends="register.custom.compilers" description="Compile module proj4android; production classes">
+    <mkdir dir="${proj4android.output.dir}"/>
+    <javac2 destdir="${proj4android.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.proj4android}/javac">
+      <compilerarg line="${compiler.args.proj4android}"/>
+      <bootclasspath refid="proj4android.module.bootclasspath"/>
+      <classpath refid="proj4android.module.production.classpath"/>
+      <src refid="proj4android.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.proj4android"/>
+    </javac2>
+    
+    <copy todir="${proj4android.output.dir}">
+      <fileset dir="${module.proj4android.basedir}/build/generated/source/r/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/source/aidl/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/source/buildConfig/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/source/rs/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/res/rs/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/res/resValues/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/src/main/res">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/src/main/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.proj4android.tests" depends="register.custom.compilers,compile.module.proj4android.production" description="compile module proj4android; test classes" unless="skip.tests">
+    <mkdir dir="${proj4android.testoutput.dir}"/>
+    <javac2 destdir="${proj4android.testoutput.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.proj4android}/javac">
+      <compilerarg line="${compiler.args.proj4android}"/>
+      <bootclasspath refid="proj4android.module.bootclasspath"/>
+      <classpath refid="proj4android.module.classpath"/>
+      <src refid="proj4android.module.test.sourcepath"/>
+      <patternset refid="excluded.from.compilation.proj4android"/>
+    </javac2>
+    
+    <copy todir="${proj4android.testoutput.dir}">
+      <fileset dir="${module.proj4android.basedir}/build/generated/source/r/androidTest/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/source/aidl/androidTest/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/source/buildConfig/androidTest/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/source/rs/androidTest/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/res/rs/androidTest/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/build/generated/res/resValues/androidTest/debug">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/src/androidTest/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+      <fileset dir="${module.proj4android.basedir}/src/test/java">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="clean.module.proj4android" description="cleanup module">
+    <delete dir="${proj4android.output.dir}"/>
+    <delete dir="${proj4android.testoutput.dir}"/>
+  </target>
+</project>
